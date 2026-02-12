@@ -59,11 +59,11 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
 
     public void Subscribe()
     {
-        Debug.Log("Create Account");
+        PanelManager.Instance.Load(Panel.Subscribe);
     }
 
     public void Failure(PlayFabError playFabError)
     {
-        Debug.Log(playFabError.GenerateErrorReport());
+        PanelManager.Instance.Load(Panel.Error, playFabError.GenerateErrorReport());
     }
 }
