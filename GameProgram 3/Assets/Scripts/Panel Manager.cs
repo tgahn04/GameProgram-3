@@ -66,7 +66,7 @@ public class PanelManager : MonoBehaviour
 
         if(message != null)
         {
-            Debug.Log(message);
+            clone.GetComponent<ErrorPanel>().SetText(message);
         }
     }
 }
