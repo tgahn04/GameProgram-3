@@ -1,25 +1,25 @@
-﻿using Photon.Pun;
+using UnityEngine;
+using Photon.Pun;
 using PlayFab;
 using PlayFab.ClientModels;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class SubscribePanel : MonoBehaviourPunCallbacks
 {
-    [SerializeField] InputField[] inputFields = new InputField[3];
+    [SerializeField] InputField [ ] inputFields = new InputField[3];
 
     private void Awake()
     {
-        inputFields = GetComponentsInChildren<InputField>();
+        inputFields = GetComponentsInChildren<InputField>();   
     }
 
     public void Subscribe()
     {
         var request = new RegisterPlayFabUserRequest
-        {
-           Username = inputFields[0].text,
-           Email = inputFields[1].text,
-           Password = inputFields[2].text,
+        { 
+            Username = inputFields[0].text,
+            Email = inputFields[1].text,
+            Password = inputFields[2].text,
         };
 
         PlayFabClientAPI.RegisterPlayFabUser
@@ -40,6 +40,7 @@ public class SubscribePanel : MonoBehaviourPunCallbacks
         var content = playFabError.GenerateErrorReport();
 
         var lines = content.Split("\n");
+
 
         switch (lines.Length)
         {

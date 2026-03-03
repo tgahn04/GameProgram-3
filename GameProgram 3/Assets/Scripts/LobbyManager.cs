@@ -1,16 +1,61 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using Photon.Pun;
-using NUnit.Framework;
+using System.Collections.Generic;
 using Photon.Realtime;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] Transform parentTransform;
+
+    [SerializeField] Dictionary<string, GameObject> dictionary = new Dictionary<string, GameObject>();
+
+    public void GenerateRoom()
+    {
+        PanelManager.Instance.Load(Panel.Generator);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        PhotonNetwork.LoadLevel("Game");
+    }
+
     public override void OnConnectedToMaster()
     {
-        // joinLobby : íŠ¹ì • ë¡œë¹„ë¥¼ ìƒì„±í•˜ì—¬ ì§„ì…í•˜ëŠ” í•¨ìˆ˜
+        // JoinLobby : Æ¯Á¤ ·Îºñ¸¦ »ı¼ºÇÏ¿© ÁøÀÔÇÏ´Â ÇÔ¼ö
         if(PhotonNetwork.InLobby == false)
         {
             PhotonNetwork.JoinLobby();
         }
+    }
+
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        GameObject prefab = null;
+
+        foreach(RoomInfo roomInfo in roomList)
+        {
+            // ·ëÀÌ »èÁ¦µÈ °æ¿ì
+            if(roomInfo.RemovedFromList)
+            {
+                dictionary.TryGetValue(roomInfo.Name, out prefab);
+
+                Destroy(prefab);
+
+                dictionary.Remove(roomInfo.Name);
+            }
+            else // ·ëÀÇ Á¤º¸°¡ º¯°æµÇ´Â °æ¿ì
+            {
+                // ·ëÀÌ Ã³À½ »ı¼ºµÇ´Â °æ¿ì
+                if(dictionary.TryGetValue(roomInfo.Name, out prefab) == false)
+                {
+                    prefab = Instantiate(Resources.Load<GameObject>("Room"), parentTransform);
+                    
+                    dictionary.Add(roomInfo.Name, prefab);
+                }
+
+                prefab.GetComponent<RoomData>().UpdateRoomInformation(roomInfo);
+            }
+        }
+       
     }
 }

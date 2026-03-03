@@ -659,7 +659,6 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1180,7 +1179,7 @@ GameObject:
   - component: {fileID: 4222349750606572428}
   - component: {fileID: 7413686595252074167}
   - component: {fileID: 3355970430544417350}
-  - component: {fileID: 401884730788467523}
+  - component: {fileID: 4409968607373187078}
   m_Layer: 5
   m_Name: Subscribe
   m_TagString: Untagged
@@ -1309,7 +1308,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &401884730788467523
+--- !u!114 &4409968607373187078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1318,9 +1317,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5404901103780848435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edd145043fc8dfb49b1ca152ad7558ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 402419bafd862cf41bb789a58a996e41, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SubscribePanel
+  m_EditorClassIdentifier: 
   inputFields:
   - {fileID: 0}
   - {fileID: 0}
@@ -1574,7 +1573,6 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2250,7 +2248,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 401884730788467523}
+      - m_Target: {fileID: 4409968607373187078}
         m_TargetAssemblyTypeName: SubscribePanel, Assembly-CSharp
         m_MethodName: Subscribe
         m_Mode: 1
