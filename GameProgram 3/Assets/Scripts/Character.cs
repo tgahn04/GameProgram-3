@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using Photon.Pun;
 
 public class Character : MonoBehaviourPun
@@ -21,6 +21,8 @@ public class Character : MonoBehaviourPun
     {
         if(photonView.IsMine)
         {
+            Pause();
+
             Control();
 
             Move();
@@ -29,9 +31,19 @@ public class Character : MonoBehaviourPun
         }    
     }
 
+    void Pause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            MouseManager.Instance.SetMouse(true);
+
+            PanelManager.Instance.Load(Panel.Pause);
+        }
+    }
+
     public void DisableCamera()
     {
-        // ÇöÀç ÇÃ·¹ÀÌ¾î°¡ ³ª ÀÚ½ÅÀÌ¶ó¸é
+        // í˜„ì¬ í”Œë ˆì´ì–´ê°€ ë‚˜ ìì‹ ì´ë¼ë©´
         if(photonView.IsMine)
         {
             Camera.main.gameObject.SetActive(false);
@@ -51,7 +63,7 @@ public class Character : MonoBehaviourPun
         direction.x = Input.GetAxisRaw("Horizontal");
         direction.z = Input.GetAxisRaw("Vertical");
 
-        // direction ¹æÇâÀ» ´ÜÀ§ º¤ÅÍ·Î ¼³Á¤ÇÕ´Ï´Ù.
+        // direction ë°©í–¥ì„ ë‹¨ìœ„ ë²¡í„°ë¡œ ì„¤ì •í•©ë‹ˆë‹¤.
         direction.Normalize();
     }
 
