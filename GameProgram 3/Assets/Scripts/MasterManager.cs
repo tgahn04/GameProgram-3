@@ -1,7 +1,7 @@
-﻿using UnityEngine;
 using Photon.Pun;
-using System.Collections;
 using Photon.Realtime;
+using System.Collections;
+using UnityEngine;
 
 public class MasterManager : MonoBehaviourPunCallbacks
 {
@@ -11,14 +11,20 @@ public class MasterManager : MonoBehaviourPunCallbacks
     {
         if(PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.Instantiate("Potion", Vector3.zero, Quaternion.identity);
+            while (true)
+            {
+                if (PhotonNetwork.CurrentRoom != null)
+                {
+                    PhotonNetwork.InstantiateRoomObject("Potion", Vector3.zero, Quaternion.identity);
+                }
 
-            yield return waitForSeconds;
+                yield return waitForSeconds;
+            }
         }
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)
     {
-        // base.OnMasterClientSwitched
+        PhotonNetwork.SetMasterClient(PhotonNetwork.PlayerList[0]);
     }
 }

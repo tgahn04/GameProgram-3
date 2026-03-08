@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 2011229600287923126}
   - component: {fileID: 8174007443239017730}
   - component: {fileID: 7819484939453363730}
-  - component: {fileID: 8551480258045155064}
+  - component: {fileID: 4190416682775456715}
   m_Layer: 0
   m_Name: Pause
   m_TagString: Untagged
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8551480258045155064
+--- !u!114 &4190416682775456715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5624271522217789364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 445e4b7d67632e5478930c00369e9d0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fc7d0876795d95418b7f85a5c5d193e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6149186122059330461
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8551480258045155064}
+      - m_Target: {fileID: 4190416682775456715}
         m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8551480258045155064}
+      - m_Target: {fileID: 4190416682775456715}
         m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
         m_MethodName: Continue
         m_Mode: 1

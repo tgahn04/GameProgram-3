@@ -1,4 +1,4 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using Photon.Pun;
 
 public class Character : MonoBehaviourPun
@@ -33,7 +33,7 @@ public class Character : MonoBehaviourPun
 
     void Pause()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             MouseManager.Instance.SetMouse(true);
 
@@ -43,7 +43,7 @@ public class Character : MonoBehaviourPun
 
     public void DisableCamera()
     {
-        // í˜„ì¬ í”Œë ˆì´ì–´ê°€ ë‚˜ ìì‹ ì´ë¼ë©´
+        // ÇöÀç ÇÃ·¹ÀÌ¾î°¡ ³ª ÀÚ½ÅÀÌ¶ó¸é
         if(photonView.IsMine)
         {
             Camera.main.gameObject.SetActive(false);
@@ -63,12 +63,31 @@ public class Character : MonoBehaviourPun
         direction.x = Input.GetAxisRaw("Horizontal");
         direction.z = Input.GetAxisRaw("Vertical");
 
-        // direction ë°©í–¥ì„ ë‹¨ìœ„ ë²¡í„°ë¡œ ì„¤ì •í•©ë‹ˆë‹¤.
+        // direction ¹æÇâÀ» ´ÜÀ§ º¤ÅÍ·Î ¼³Á¤ÇÕ´Ï´Ù.
         direction.Normalize();
     }
 
     public void Move()
     {
         transform.Translate(direction * speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Consumable") == false)
+        {
+            return;
+        }
+
+        PhotonView view = other.GetComponent<PhotonView>();
+        
+        if(view.IsMine)
+        {
+            PhotonNetwork.Destroy(view.gameObject);
+        }
+        else if(PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Destroy(view.gameObject);
+        }
     }
 }
