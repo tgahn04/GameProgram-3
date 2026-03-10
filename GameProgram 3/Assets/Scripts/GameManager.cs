@@ -1,4 +1,4 @@
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,15 +14,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] Text timeText;
 
     void Awake()
-    {
-        if(PhotonNetwork.IsMasterClient)
-        {
-            photonView.RPC("SetTime", RpcTarget.AllBuffered);
-        }
-    }
-
-    [PunRPC]
-    void SetTime()
     {
         initializeTime = PhotonNetwork.Time;
     }
