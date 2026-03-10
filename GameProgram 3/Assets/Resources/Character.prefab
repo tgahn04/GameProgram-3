@@ -705,10 +705,10 @@ GameObject:
   - component: {fileID: 8773902411179134524}
   - component: {fileID: 7589571450611174034}
   - component: {fileID: 562310683829400381}
-  - component: {fileID: 5327526148175475844}
   - component: {fileID: 8277010553780253662}
   - component: {fileID: 8385973969154280424}
   - component: {fileID: 8125145725504729262}
+  - component: {fileID: 4010002868082013200}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -799,26 +799,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 5327526148175475844}
+  - {fileID: 4010002868082013200}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &5327526148175475844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5864561686813219921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!114 &8277010553780253662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +818,7 @@ MonoBehaviour:
   speed: 10
   direction: {x: 0, y: 0, z: 0}
   rotation: {fileID: 0}
+  rigidBody: {fileID: 0}
 --- !u!114 &8385973969154280424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +860,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &4010002868082013200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864561686813219921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &8580124379062030442
 GameObject:
   m_ObjectHideFlags: 0
